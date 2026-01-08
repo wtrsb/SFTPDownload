@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="off">
+    <Properties>
+        <Property name="loglayout">[%d{yyyy-MM-dd HH:mm:ss}], %-5p, %m%n</Property>
+        <Property name="path">C:\Git\work\SFTPDownload\scripts\log</Property>
+    </Properties>
+    <Appenders>
+        <Console name="stdout" target="SYSTEM_OUT">
+            <PatternLayout pattern="${loglayout}"/>
+        </Console>
+    <RollingFile name="file" fileName="${path}\app.log" filePattern="${path}\app.%d{yyyy-MM-dd}.log">
+        <PatternLayout pattern="${loglayout}" />
+        <TimeBasedTriggeringPolicy />
+    </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="root" level="debug" additivity="false">
+            <AppenderRef ref="stdout"/>
+            <AppenderRef ref="file"/>
+        </Logger>
+    </Loggers>
+</Configuration>
